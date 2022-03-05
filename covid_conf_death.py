@@ -36,7 +36,6 @@ for state in STATES:
     tmp_rows = ddf.iloc[np.where(ddf['Province_State'] == state)]
     row = tmp_rows.head(1)
     pop = tmp_rows['Population'].sum()
-    # print(row['iso2'].values[0])
     for date in dates:
         total = tmp_rows[date].sum()
         new_ddf.loc[len(new_ddf.index)] = [date, row['iso2'].values[0], row['iso3'].values[0], row['code3'].values[0], cur_fip,row['Province_State'].values[0],
