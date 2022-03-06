@@ -1,8 +1,5 @@
-#mysql --local-infile=1 -u root -p
 SET SQL_SAFE_UPDATES = 0;
-
 USE covid_app;
-drop table death_orig;
 CREATE TABLE death_orig (
     c_date VARCHAR(50),
     iso2 VARCHAR(5),
@@ -27,7 +24,6 @@ UPDATE death_orig SET c_date = STR_TO_DATE(c_date, '%m/%d/%Y');
 select * from death_orig;
 
 
-drop table state_info;
 create table state_info(
 	FIPS INT,
     Population INT
@@ -36,12 +32,11 @@ create table state_info(
         from death_orig
         group by fips, population;
 select * from state_info;
-
 CREATE TABLE Deaths (
 	FIPS INT,
     c_date DATE,
-	Deaths INT
+	Death INT
 )
-	SELECT FIPS, c_date, Deaths
+	SELECT FIPS, c_date, Death
 	FROM death_orig;
 

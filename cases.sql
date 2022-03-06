@@ -1,7 +1,5 @@
-#mysql --local-infile=1 -u root -p
 USE covid_app;
 
-drop table conf_orig;
 SET SQL_SAFE_UPDATES = 0;
 CREATE TABLE conf_orig (
     c_date VARCHAR(50),
@@ -23,7 +21,6 @@ IGNORE 1 ROWS
 UPDATE conf_orig SET c_date = STR_TO_DATE(c_date, '%m/%d/%Y');
 select *from conf_orig;
 
-drop table cases;
 CREATE TABLE cases (
 	FIPS INT,
     c_date VARCHAR(50),
