@@ -240,6 +240,14 @@ tests_combined_total = if(@tests_combined_total="", NULL, @tests_combined_total)
 SELECT *
 FROM tests_raw;
 
+CREATE TABLE state_code_info (    
+	state_fips INT,
+    state_code VARCHAR(3)
+)
+	SELECT DISTINCT state_fips, state_code 
+	FROM trips_raw
+	WHERE state_code != '';
+
 SELECT  a.state_fips, tests_raw.tests_date,tests_raw.state_code, tests_raw.tests_combined_total
 FROM tests_raw
 LEFT JOIN 
